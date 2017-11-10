@@ -1,0 +1,35 @@
+CC=@CC@
+export CC
+datarootdir=@datarootdir@
+prefix=@prefix@
+includedir=@includedir@
+CFLAGS=@CFLAGS@
+export CFLAGS
+VERSION=@PACKAGE_VERSION@
+export VERSION
+TESTDIR=tests
+
+.PHONY: check clean distclean install test uninstall
+
+all:
+
+check:
+	$(MAKE) -C $(TESTDIR) all
+
+clean:
+	$(MAKE) -C $(TESTDIR) clean
+
+distclean: clean
+	rm config.log config.status config.h Makefile
+	$(MAKE) -C $(TESTDIR) distclean
+
+install:
+	mkdir -p $(DESTDIR)$(includedir)
+	install -m 644 minmax.h $(DESTDIR)$(includedir)/minmax.h
+
+test: check
+
+uninstall:
+	if [ -e $(DESTDIR)$(includedir)/minmax.h ]; then \
+	rm -v $(DESTDIR)$(includedir)/minmax.h; \
+	fi

@@ -1,0 +1,32 @@
+minmax
+======
+
+Version 0.0.1 (November 2017)
+
+minmax is a header-only library that implements min and max functions for a variable number of arguments.
+
+Usage
+-----
+
+#include <minmax.h>
+
+Functions
+---------
+
+* mins() and maxs() for short int data type
+* mini() and maxi() for int
+* minl() and maxl() for long int
+* minll() and maxll() for long long int
+* min_int8() and max_int8() for int8_t
+* min_int16() and max_int16() for int16_t
+* min_int32() and max_int32() for int32_t
+* min_int64() and max_int64() for int64_t
+
+All functions return a value of the same type as its arguments.
+
+Licensing
+---------
+
+minmax is free software, and is released under the terms of the GNU General 
+Public License version 3 or any later version. Please see the file called 
+LICENSE.

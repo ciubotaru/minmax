@@ -1,0 +1,22 @@
+TESTFILES=test1 test2 test3 test4 test5 test6 test7 test8
+HEADER_PATH=-I..
+CFLAGS=@CFLAGS@
+
+all: build-tests run-tests
+
+build-tests: $(TESTFILES)
+$(TESTFILES): %: %.c
+	$(CC) $(CFLAGS) -o $@ $< $(HEADER_PATH)
+
+run-tests: $(TESTFILES)
+	for i in $(TESTFILES); do \
+	./$$i; \
+	done
+
+clean:
+	rm -rvf $(TESTFILES)
+
+distclean:
+	rm Makefile
+
+.PHONY: all build-tests run-tests clean distclean
