@@ -18,27 +18,27 @@
 #define minmax_count(...) (int) (sizeof((int[]){__VA_ARGS__})/sizeof(int))
 
 #if SHRT_MAX == INT16_MAX
-#define maxs(...) (short) _max_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define mins(...) (short) _min_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define maxs (short) max_int16
+#define mins (short) min_int16
 #elif SHRT_MAX == INT32_MAX
-#define maxs(...) (short) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define mins(...) (short) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define maxs (short) max_int32
+#define mins (short) min_int32
 #endif
 
 #if INT_MAX == INT16_MAX
-#define maxi(...) (int) _max_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define mini(...) (int) _min_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define maxi (int) max_int16
+#define mini (int) min_int16
 #elif INT_MAX == INT32_MAX
-#define maxi(...) (int) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define mini(...) (int) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define maxi (int) max_int32
+#define mini (int) min_int32
 #endif
 
 #if LONG_MAX == INT32_MAX
-#define maxl(...) (long) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define minl(...) (long) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define maxl (long) max_int32
+#define minl (long) min_int32
 #elif LONG_MAX == INT64_MAX
-#define maxl(...) (long) _max_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define minl(...) (long) _min_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define maxl (long) max_int64
+#define minl (long) min_int64
 #endif
 
 #if LLONG_MAX == INT64_MAX
