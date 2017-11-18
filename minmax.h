@@ -46,16 +46,16 @@
 #define minll (long long) min_int64
 #endif
 
-#define max_int8(...) (int8_t) _max_int8(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int8(...) (int8_t) _min_int8(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define max_int16(...) (int16_t) _max_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int16(...) (int16_t) _min_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define max_int32(...) (int32_t) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int32(...) (int32_t) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define max_int64(...) (int64_t) _max_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int64(...) (int64_t) _min_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int8(...) (int8_t) max_int8_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int8(...) (int8_t) min_int8_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int16(...) (int16_t) max_int16_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int16(...) (int16_t) min_int16_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int32(...) (int32_t) max_int32_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int32(...) (int32_t) min_int32_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int64(...) (int64_t) max_int64_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int64(...) (int64_t) min_int64_(minmax_count(__VA_ARGS__), __VA_ARGS__)
 
-inline static int8_t _max_int8(int count, ...)
+inline static int8_t max_int8_(int count, ...)
 {
 	int i;
 	int8_t tmp;
@@ -71,7 +71,7 @@ inline static int8_t _max_int8(int count, ...)
 	return output;
 }
 
-inline static int8_t _min_int8(int count, ...)
+inline static int8_t min_int8_(int count, ...)
 {
 	int i;
 	int8_t tmp;
@@ -87,7 +87,7 @@ inline static int8_t _min_int8(int count, ...)
 	return output;
 }
 
-inline static int16_t _max_int16(int count, ...)
+inline static int16_t max_int16_(int count, ...)
 {
 	int i;
 	int16_t tmp;
@@ -103,7 +103,7 @@ inline static int16_t _max_int16(int count, ...)
 	return output;
 }
 
-inline static int16_t _min_int16(int count, ...)
+inline static int16_t min_int16_(int count, ...)
 {
 	int i;
 	int16_t tmp;
@@ -119,7 +119,7 @@ inline static int16_t _min_int16(int count, ...)
 	return output;
 }
 
-inline static int32_t _max_int32(int count, ...)
+inline static int32_t max_int32_(int count, ...)
 {
 	int i;
 	int32_t tmp;
@@ -135,7 +135,7 @@ inline static int32_t _max_int32(int count, ...)
 	return output;
 }
 
-inline static int32_t _min_int32(int count, ...)
+inline static int32_t min_int32_(int count, ...)
 {
 	int i;
 	int32_t tmp;
@@ -151,7 +151,7 @@ inline static int32_t _min_int32(int count, ...)
 	return output;
 }
 
-inline static int64_t _max_int64(int count, ...)
+inline static int64_t max_int64_(int count, ...)
 {
 	int i;
 	int64_t tmp;
@@ -167,7 +167,7 @@ inline static int64_t _max_int64(int count, ...)
 	return output;
 }
 
-inline static int64_t _min_int64(int count, ...)
+inline static int64_t min_int64_(int count, ...)
 {
 	int i;
 	int64_t tmp;
