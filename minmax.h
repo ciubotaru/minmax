@@ -15,30 +15,30 @@
 #include <stdint.h>		/* for intXX_t */
 #include <stdarg.h>		/* for variable arguments */
 
-#define count(...) (int) (sizeof((int[]){__VA_ARGS__})/sizeof(int))
+#define minmax_count(...) (int) (sizeof((int[]){__VA_ARGS__})/sizeof(int))
 
 #if SHRT_MAX == INT16_MAX
-#define maxs(...) (short) _max_int16(count(__VA_ARGS__), __VA_ARGS__)
-#define mins(...) (short) _min_int16(count(__VA_ARGS__), __VA_ARGS__)
+#define maxs(...) (short) _max_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define mins(...) (short) _min_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
 #elif SHRT_MAX == INT32_MAX
-#define maxs(...) (short) _max_int32(count(__VA_ARGS__), __VA_ARGS__)
-#define mins(...) (short) _min_int32(count(__VA_ARGS__), __VA_ARGS__)
+#define maxs(...) (short) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define mins(...) (short) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
 #endif
 
 #if INT_MAX == INT16_MAX
-#define maxi(...) (int) _max_int16(count(__VA_ARGS__), __VA_ARGS__)
-#define mini(...) (int) _min_int16(count(__VA_ARGS__), __VA_ARGS__)
+#define maxi(...) (int) _max_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define mini(...) (int) _min_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
 #elif INT_MAX == INT32_MAX
-#define maxi(...) (int) _max_int32(count(__VA_ARGS__), __VA_ARGS__)
-#define mini(...) (int) _min_int32(count(__VA_ARGS__), __VA_ARGS__)
+#define maxi(...) (int) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define mini(...) (int) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
 #endif
 
 #if LONG_MAX == INT32_MAX
-#define maxl(...) (long) _max_int32(count(__VA_ARGS__), __VA_ARGS__)
-#define minl(...) (long) _min_int32(count(__VA_ARGS__), __VA_ARGS__)
+#define maxl(...) (long) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define minl(...) (long) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
 #elif LONG_MAX == INT64_MAX
-#define maxl(...) (long) _max_int64(count(__VA_ARGS__), __VA_ARGS__)
-#define minl(...) (long) _min_int64(count(__VA_ARGS__), __VA_ARGS__)
+#define maxl(...) (long) _max_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define minl(...) (long) _min_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
 #endif
 
 #if LLONG_MAX == INT64_MAX
@@ -46,14 +46,14 @@
 #define minll (long long) min_int64
 #endif
 
-#define max_int8(...) (int8_t) _max_int8(count(__VA_ARGS__), __VA_ARGS__)
-#define min_int8(...) (int8_t) _min_int8(count(__VA_ARGS__), __VA_ARGS__)
-#define max_int16(...) (int16_t) _max_int16(count(__VA_ARGS__), __VA_ARGS__)
-#define min_int16(...) (int16_t) _min_int16(count(__VA_ARGS__), __VA_ARGS__)
-#define max_int32(...) (int32_t) _max_int32(count(__VA_ARGS__), __VA_ARGS__)
-#define min_int32(...) (int32_t) _min_int32(count(__VA_ARGS__), __VA_ARGS__)
-#define max_int64(...) (int64_t) _max_int64(count(__VA_ARGS__), __VA_ARGS__)
-#define min_int64(...) (int64_t) _min_int64(count(__VA_ARGS__), __VA_ARGS__)
+#define max_int8(...) (int8_t) _max_int8(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int8(...) (int8_t) _min_int8(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int16(...) (int16_t) _max_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int16(...) (int16_t) _min_int16(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int32(...) (int32_t) _max_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int32(...) (int32_t) _min_int32(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int64(...) (int64_t) _max_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define min_int64(...) (int64_t) _min_int64(minmax_count(__VA_ARGS__), __VA_ARGS__)
 
 inline static int8_t _max_int8(int count, ...)
 {
