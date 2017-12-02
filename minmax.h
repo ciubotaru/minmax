@@ -46,140 +46,56 @@
 #define minll (long long) min_int64
 #endif
 
-#define max_int8(...) (int8_t) max_int8_(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int8(...) (int8_t) min_int8_(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define max_int16(...) (int16_t) max_int16_(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int16(...) (int16_t) min_int16_(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define max_int32(...) (int32_t) max_int32_(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int32(...) (int32_t) min_int32_(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define max_int64(...) (int64_t) max_int64_(minmax_count(__VA_ARGS__), __VA_ARGS__)
-#define min_int64(...) (int64_t) min_int64_(minmax_count(__VA_ARGS__), __VA_ARGS__)
+#define max_int8(...) (int8_t) minmax_int8_(1, minmax_count(__VA_ARGS__), (int8_t[]) {__VA_ARGS__})
+#define min_int8(...) (int8_t) minmax_int8_(0, minmax_count(__VA_ARGS__), (int8_t[]) {__VA_ARGS__})
+#define max_int16(...) (int16_t) minmax_int16_(1, minmax_count(__VA_ARGS__), (int16_t[]) {__VA_ARGS__})
+#define min_int16(...) (int16_t) minmax_int16_(0, minmax_count(__VA_ARGS__), (int16_t[]) {__VA_ARGS__})
+#define max_int32(...) (int32_t) minmax_int32_(1, minmax_count(__VA_ARGS__), (int32_t[]) {__VA_ARGS__})
+#define min_int32(...) (int32_t) minmax_int32_(0, minmax_count(__VA_ARGS__), (int32_t[]) {__VA_ARGS__})
+#define max_int64(...) (int64_t) minmax_int64_(1, minmax_count(__VA_ARGS__), (int64_t[]){__VA_ARGS__})
+#define min_int64(...) (int64_t) minmax_int64_(0, minmax_count(__VA_ARGS__), (int64_t[]){__VA_ARGS__})
 
-inline static int8_t max_int8_(int count, ...)
+inline static int8_t minmax_int8_(int sign, int count, int8_t *arr)
 {
 	int i;
-	int8_t tmp;
-	va_list args;
-	va_start(args, count);
-	int8_t output = va_arg(args, int); /** int8_t is promoted to int */
+	int8_t output = arr[0];
 	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int);
-		if (tmp > output)
-			output = tmp;
+		if ((sign == 1 && arr[i] > output) || (sign == 0 && arr[i] < output))
+			output = arr[i];
 	}
-	va_end(args);
 	return output;
 }
 
-inline static int8_t min_int8_(int count, ...)
+inline static int16_t minmax_int16_(int sign, int count, int16_t *arr)
 {
 	int i;
-	int8_t tmp;
-	va_list args;
-	va_start(args, count);
-	int8_t output = va_arg(args, int);
+	int16_t output = arr[0];
 	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int);
-		if (tmp < output)
-			output = tmp;
+		if ((sign == 1 && arr[i] > output) || (sign == 0 && arr[i] < output))
+			output = arr[i];
 	}
-	va_end(args);
 	return output;
 }
 
-inline static int16_t max_int16_(int count, ...)
+inline static int32_t minmax_int32_(int sign, int count, int32_t *arr)
 {
 	int i;
-	int16_t tmp;
-	va_list args;
-	va_start(args, count);
-	int16_t output = va_arg(args, int); /** int16_t is promoted to int */
+	int32_t output = arr[0];
 	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int);
-		if (tmp > output)
-			output = tmp;
+		if ((sign == 1 && arr[i] > output) || (sign == 0 && arr[i] < output))
+			output = arr[i];
 	}
-	va_end(args);
 	return output;
 }
 
-inline static int16_t min_int16_(int count, ...)
+inline static int64_t minmax_int64_(int sign, int count, int64_t *arr)
 {
 	int i;
-	int16_t tmp;
-	va_list args;
-	va_start(args, count);
-	int16_t output = va_arg(args, int);
+	int64_t output = arr[0];
 	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int);
-		if (tmp < output)
-			output = tmp;
+		if ((sign == 1 && arr[i] > output) || (sign == 0 && arr[i] < output))
+			output = arr[i];
 	}
-	va_end(args);
-	return output;
-}
-
-inline static int32_t max_int32_(int count, ...)
-{
-	int i;
-	int32_t tmp;
-	va_list args;
-	va_start(args, count);
-	int32_t output = va_arg(args, int32_t);
-	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int32_t);
-		if (tmp > output)
-			output = tmp;
-	}
-	va_end(args);
-	return output;
-}
-
-inline static int32_t min_int32_(int count, ...)
-{
-	int i;
-	int32_t tmp;
-	va_list args;
-	va_start(args, count);
-	int32_t output = va_arg(args, int32_t);
-	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int32_t);
-		if (tmp < output)
-			output = tmp;
-	}
-	va_end(args);
-	return output;
-}
-
-inline static int64_t max_int64_(int count, ...)
-{
-	int i;
-	int64_t tmp;
-	va_list args;
-	va_start(args, count);
-	int64_t output = va_arg(args, int64_t);
-	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int64_t);
-		if (tmp > output)
-			output = tmp;
-	}
-	va_end(args);
-	return output;
-}
-
-inline static int64_t min_int64_(int count, ...)
-{
-	int i;
-	int64_t tmp;
-	va_list args;
-	va_start(args, count);
-	int64_t output = va_arg(args, int64_t);
-	for (i = 1; i < count; i++) {
-		tmp = va_arg(args, int64_t);
-		if (tmp < output)
-			output = tmp;
-	}
-	va_end(args);
 	return output;
 }
 
